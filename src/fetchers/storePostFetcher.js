@@ -1,4 +1,5 @@
 import fetchToBlogApi from '../util/fetchToBlogApi'
+import fetchWrapper from '../util/fetchWrapper'
 
 export default function storePostFetcher({ id, name, description }) {
   const body = {
@@ -6,9 +7,11 @@ export default function storePostFetcher({ id, name, description }) {
     name,
     description
   }
-  return fetchToBlogApi({
-    url: `/posts`,
-    method: 'POST',
-    body: JSON.stringify(body)
-  }).then((response) => response.json().then((data) => ({ data, status: response.status })))
+  return fetchWrapper(
+    fetchToBlogApi({
+      url: `/posts`,
+      method: 'POST',
+      body: JSON.stringify(body)
+    })
+  )
 }
