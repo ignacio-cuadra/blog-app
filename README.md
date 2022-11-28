@@ -1,7 +1,7 @@
 # Blog App
 Blog App Challenge - TCIT (web solutions)
 
-This repository is the Front End of Blog Challenge, if you wanna see the back end check this url [https://github.com/ignacio-cuadra/blog-api](https://github.com/ignacio-cuadra/blog-api)
+This repository is the Front End of a blog challenge, if you wanna see the Back End visit this url [https://github.com/ignacio-cuadra/blog-api](https://github.com/ignacio-cuadra/blog-api)
 
 ## This project has
 ✔️ Responsive layout
@@ -16,7 +16,7 @@ This repository is the Front End of Blog Challenge, if you wanna see the back en
 
 ## Initialice and start project
 
-First configure the .env.local file. Copy ```.env.example``` and paste with name the ```.env.local```, then set api url
+Copy ```.env.example``` and paste with the name ```.env.local```, then set api url
 
 ```cmd
 npm install
