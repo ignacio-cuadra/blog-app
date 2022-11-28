@@ -14,6 +14,10 @@ This repository is the Front End of a blog challenge, if you wanna see the Back 
 
 ✔️ Custom Hooks (to notify messages)
 
+✔️ Test (only button component ⏲️)
+
+✔️ Cypress Test
+
 ## Initialice and start project
 
 Copy ```.env.example``` and paste with the name ```.env.local```, then set api url

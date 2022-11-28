@@ -53,7 +53,7 @@ const PostTableRow = ({ index, post }) => {
         <span className="block">{post.name}</span>
         <span className="text-xs text-gray-500 flex items-center whitespace-nowrap">
           <AiOutlineNumber />
-          {post.id}
+          <span aria-label="post id">{post.id}</span>
         </span>
       </td>
       <td className="hidden sm:table-cell p-2">

@@ -23,6 +23,7 @@ const Button = ({
   const theme = variants[variant]
   return (
     <button
+      aria-label={children}
       className={`p-2 flex items-center gap-1 transition-all ${theme}`}
       onClick={onClick}
       disabled={disabled || isLoading}>
