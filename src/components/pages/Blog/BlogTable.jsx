@@ -8,9 +8,10 @@ const BlogTable = ({ posts = [] }) => {
       <table className="w-full">
         <thead className="sticky top-0">
           <tr className="text-gray-200 bg-gray-800 dark:bg-gray-300 dark:text-gray-800">
-            <th className="py-2 w-0">Nombre</th>
-            <th className="py-2">Descripción</th>
-            <th className="py-2 w-0"></th>
+            <th className="table-cell sm:hidden py-2 w-0">Posts</th>
+            <th className="hidden sm:table-cell py-2 w-0">Nombre</th>
+            <th className="hidden sm:table-cell py-2">Descripción</th>
+            <th className="hidden sm:table-cell py-2 w-0"></th>
           </tr>
         </thead>
         <tbody className="dark:text-gray-300">

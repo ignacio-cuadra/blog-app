@@ -45,18 +45,20 @@ const BlogForm = () => {
   return (
     <div className="border border-gray-400 p-4  dark:border-gray-700 dark:text-gray-300">
       <span className="block mb-3 font-raleway font-semibold">Crear nuevo registro</span>
-      <form className="flex my-2 gap-4 place-items-end" onSubmit={handleSearchSubmit}>
-        <label>
+      <form
+        className="flex flex-col sm:flex-row my-2 gap-4 place-items-end"
+        onSubmit={handleSearchSubmit}>
+        <label className="w-full">
           <span className="block mb-1 ">Nombre</span>
           <input
             type="text"
             placeholder="Nombre..."
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="p-2 outline-none dark:bg-gray-900 dark:text-gray-300"
+            className="p-2 w-full outline-none dark:bg-gray-900 dark:text-gray-300"
           />
         </label>
-        <label className="grow">
+        <label className="grow w-full">
           <span className="block mb-1 ">Descripción</span>
           <input
             type="text"

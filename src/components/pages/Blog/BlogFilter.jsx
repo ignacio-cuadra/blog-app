@@ -34,7 +34,7 @@ const BlogFilter = ({ isFiltered, setIsFiltered, filteredPosts, setFilteredPosts
     filterPosts(filter)
   }
   return (
-    <div className="my-5 flex justify-between gap-2">
+    <div className="my-5 flex flex-col-reverse sm:flex-row justify-between gap-2">
       <div className="flex items-center">
         {!isFiltered ? (
           <span className="dark:text-white">Se ha(n) listado {filteredPosts.length} posts.</span>
@@ -60,7 +60,7 @@ const BlogFilter = ({ isFiltered, setIsFiltered, filteredPosts, setFilteredPosts
             id="filter-input"
             type="text"
             placeholder="Buscar..."
-            className="p-2 outline-none dark:bg-gray-900 dark:text-gray-300"
+            className="p-2 w-full sm:w-auto outline-none dark:bg-gray-900 dark:text-gray-300"
           />
           <Button icon={<AiOutlineSearch />}>Buscar</Button>
         </form>

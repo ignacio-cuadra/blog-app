@@ -32,17 +32,34 @@ const PostTableRow = ({ index, post }) => {
   return (
     <tr
       className={index % 2 === 0 ? 'bg-gray-200 dark:bg-gray-800' : 'bg-gray-300 dark:bg-gray-900'}>
-      <td className="p-2 ">
+      <td className="table-cell sm:hidden p-2">
+        <span className="block font-semibold">{post.name}</span>
+        <span className="text-xs text-gray-500 flex items-center whitespace-nowrap">
+          <AiOutlineNumber />
+          {post.id}
+        </span>
+        <p className="my-2">{post.description}</p>
+        <div className="flex justify-end">
+          <Button
+            variant="danger"
+            icon={<AiFillDelete />}
+            onClick={removePost}
+            isLoading={isLoading}>
+            Eliminar
+          </Button>
+        </div>
+      </td>
+      <td className="hidden sm:table-cell p-2">
         <span className="block">{post.name}</span>
         <span className="text-xs text-gray-500 flex items-center whitespace-nowrap">
           <AiOutlineNumber />
           {post.id}
         </span>
       </td>
-      <td className="p-2">
+      <td className="hidden sm:table-cell p-2">
         <p>{post.description}</p>
       </td>
-      <td className="p-2">
+      <td className="hidden sm:table-cell p-2">
         <Button variant="danger" icon={<AiFillDelete />} onClick={removePost} isLoading={isLoading}>
           Eliminar
         </Button>
