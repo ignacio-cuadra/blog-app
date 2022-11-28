@@ -1,9 +1,10 @@
 import { v4 as uuidv4 } from 'uuid'
 import React, { useState } from 'react'
-import Button from '../common/Button'
 import { AiOutlinePlus } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
-import { postAdded } from '../../slices/postSlice'
+import Button from '../../common/Button'
+import { postAdded } from '../../../slices/postSlice'
+import storePostFetcher from '../../../fetchers/storePostFetcher'
 
 const BlogForm = () => {
   const dispatch = useDispatch()
@@ -14,23 +15,17 @@ const BlogForm = () => {
   const createPost = () => {
     const post = { id: uuidv4(), name, description }
     setIsLoading(true)
-    fetch('http://localhost:5000/api/v1/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify(post)
-    })
-      .then((response) => response.json())
-      .then(() => {
+    storePostFetcher(post)
+      .then(({ data }) => {
         setName('')
         setDescription('')
-        dispatch(postAdded(post))
-        setIsLoading(false)
+        dispatch(postAdded(data.post))
       })
       .catch((error) => {
         console.log('error', error)
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 

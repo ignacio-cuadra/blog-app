@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import MainLayout from '../layout/MainLayout'
+import { useDispatch, useSelector } from 'react-redux'
+import { AiOutlineLoading } from 'react-icons/ai'
+import MainLayout from '../../layout/MainLayout'
+import { postsLoaded } from '../../../slices/postSlice'
 import BlogFilter from './BlogFilter'
 import BlogTable from './BlogTable'
 import BlogForm from './BlogForm'
-import { useDispatch, useSelector } from 'react-redux'
-import { AiOutlineLoading } from 'react-icons/ai'
-import { postsLoaded } from '../../slices/postSlice'
+import listPostsFetcher from '../../../fetchers/listPostsFetcher'
 
 const Blog = () => {
   const dispatch = useDispatch()
@@ -14,20 +15,16 @@ const Blog = () => {
   const [filteredPosts, setFilteredPosts] = useState(posts)
   const [isFiltered, setIsFiltered] = useState(false)
   useEffect(() => {
-    fetch('http://localhost:5000/api/v1/posts', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      }
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch(postsLoaded(json.posts))
+    listPostsFetcher()
+      .then(({ data }) => {
+        dispatch(postsLoaded(data.posts))
         setIsLoading(false)
       })
       .catch((error) => {
         console.log('error', error)
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }, [])
 

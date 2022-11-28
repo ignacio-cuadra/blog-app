@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import Button from '../common/Button'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
+import Button from '../../common/Button'
 
 const BlogFilter = ({ isFiltered, setIsFiltered, filteredPosts, setFilteredPosts }) => {
   const posts = useSelector((state) => state.posts)

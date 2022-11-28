@@ -8,7 +8,7 @@ export const postSlice = createSlice({
       return action.payload
     },
     postAdded: (state, action) => {
-      state.push(action.payload)
+      state.unshift(action.payload)
     },
     postRemovedById: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload)
