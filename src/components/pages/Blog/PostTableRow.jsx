@@ -5,17 +5,24 @@ import { useDispatch } from 'react-redux'
 import Button from '../../common/Button'
 import { postRemovedById } from '../../../slices/postSlice'
 import deletePostFetcher from '../../../fetchers/deletePostFetcher'
+import useNotify from '../../../hooks/useNotify'
 
 const PostTableRow = ({ index, post }) => {
   const dispatch = useDispatch()
+  const notify = useNotify()
   const [isLoading, setIsLoading] = useState(false)
   const removePost = () => {
     setIsLoading(true)
     deletePostFetcher({ id: post.id })
       .then(() => {
         dispatch(postRemovedById(post.id))
+        notify({ message: 'Se ha eliminado el post con éxito', variant: 'success' })
       })
       .catch((error) => {
+        notify({
+          message: 'Ha ocurrido un error durante la eliminación del post',
+          variant: 'danger'
+        })
         console.log('error', error)
       })
       .finally(() => {

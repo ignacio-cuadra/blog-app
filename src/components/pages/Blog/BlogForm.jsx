@@ -5,9 +5,11 @@ import { useDispatch } from 'react-redux'
 import Button from '../../common/Button'
 import { postAdded } from '../../../slices/postSlice'
 import storePostFetcher from '../../../fetchers/storePostFetcher'
+import useNotify from '../../../hooks/useNotify'
 
 const BlogForm = () => {
   const dispatch = useDispatch()
+  const notify = useNotify()
   const [isLoading, setIsLoading] = useState(false)
   const [messageIsResalted, setMessageIsResalted] = useState(false)
   const [name, setName] = useState('')
@@ -20,8 +22,10 @@ const BlogForm = () => {
         setName('')
         setDescription('')
         dispatch(postAdded(data.post))
+        notify({ message: 'Se ha creado el post con éxito', variant: 'success' })
       })
       .catch((error) => {
+        notify({ message: 'Ha ocurrido un error durante la creación del post', variant: 'danger' })
         console.log('error', error)
       })
       .finally(() => {

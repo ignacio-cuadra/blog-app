@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux'
+import Notification from '../common/Notification'
 
 const MainLayout = ({ children }) => {
+  const notifications = useSelector((state) => state.notifications)
   return (
     <>
       <div className="h-full p-2 overflow-auto bg-gray-200 dark:bg-gray-800">
@@ -13,7 +16,19 @@ const MainLayout = ({ children }) => {
             Desarrollado por <a href="#">Ignacio Cuadra</a>
           </h2>
         </header>
-        <main>{children}</main>
+        <main className="relative">
+          <div className="fixed z-10 flex flex-col max-w-4xl gap-2 top-1 container left-1/2 -translate-x-1/2 p-2">
+            {notifications.map((notification) => (
+              <Notification
+                key={notification.id}
+                id={notification.id}
+                variant={notification.variant}>
+                {notification.message}
+              </Notification>
+            ))}
+          </div>
+          {children}
+        </main>
       </div>
     </>
   )
